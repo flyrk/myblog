@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "bulma": "^0.5.0",
+    "classnames": "^2.2.5",
     "node-sass-chokidar": "^0.0.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -23,5 +24,11 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:8080"
+  "proxy": "http://localhost:8080",
+  "devDependencies": {
+    "axios": "^0.16.2",
+    "lodash": "^4.17.4",
+    "prop-types": "^15.5.10",
+    "validator": "^8.0.0"
+  }
 }
