@@ -31,7 +31,7 @@ class TextFieldGroup extends Component {
         faIco += 'fa-lock';
         break;
       default:
-        faIco = '';
+        faIco += 'fa-user';
     }
     return (
       <div className="field">

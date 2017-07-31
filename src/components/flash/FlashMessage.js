@@ -18,15 +18,17 @@ class FlashMessage extends Component {
   }
 
   render() {
-    const { id, type, text } = this.props.message;
+    const { type, text } = this.props.message;
     return (
-      <div className={classnames('alert', {
-        'alert-success': type === 'success',
-        'alert-danger': type === 'error'
+      <article className={classnames('message is-small', {
+        'is-success': type === 'success',
+        'is-danger': type === 'error'
       })}>
-        <button onClick={this.handlerOnClick} className='close'><span>&times;</span></button>
-        {text}
+      <div className="message-header">
+        <p>{text}</p>
+        <button onClick={this.handlerOnClick} className='delete'><span>&times;</span></button>
       </div>
+      </article>
     );
   }
 }

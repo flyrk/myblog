@@ -1,11 +1,53 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logout } from '../../actions/authActions';
 
 import logo from '../../assets/logo.png';
 import './index.css';
 
 class Header extends Component {
+  static propTypes = {
+    auth: PropTypes.object.isRequired,
+    logout: PropTypes.func.isRequired
+  }
+
+  constructor(props) {
+    super(props);
+    this.logout = this.logout.bind(this);
+  }
+
+  logout(e) {
+    e.preventDefault();
+    this.props.logout();
+  }
   render() {
+    const { isAuthenticated } = this.props.auth;
+    const guestLink = (
+      <div className="field is-grouped">
+        <p className="control">
+          <Link className="button is-primary is-inverted" to="/login">
+            <span>登录</span>
+          </Link>
+        </p>
+        <p className="control">
+          <Link className="button is-primary is-inverted" to="/signup">
+            <span>注册</span>
+          </Link>
+        </p>
+    </div>
+    );
+
+    const userLink = (
+      <div className="field is-grouped">
+        <p className="control">
+          <button className="button is-primary is-inverted" onClick={this.logout}>
+            <span>注销</span>
+          </button>
+        </p>
+      </div>
+    );
     return (
       <nav className="navbar ">
         <div className="navbar-brand">
@@ -30,18 +72,7 @@ class Header extends Component {
             </Link>
 
             <div className="navbar-item">
-              <div className="field is-grouped">
-                <p className="control">
-                  <Link className="button is-primary is-inverted" to="/login">
-                    <span>登录</span>
-                  </Link>
-                </p>
-                <p className="control">
-                  <Link className="button is-primary is-inverted" to="/signup">
-                    <span>注册</span>
-                  </Link>
-                </p>
-              </div>
+                { isAuthenticated ? userLink : guestLink }
             </div>
           </div>
         </div>
@@ -50,4 +81,10 @@ class Header extends Component {
   }
 }
 
-export default Header;
+function mapStateProps(state) {
+  return {
+    auth: state.auth
+  };
+}
+
+export default connect(mapStateProps, { logout })(Header);
