@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { login } from '../../actions/authActions';
 import { addFlashMessage } from '../../actions/flashMessages';
 
+import './Login.css';
+
 class LoginPage extends Component {
   static propTypes = {
     login: PropTypes.func.isRequired,
