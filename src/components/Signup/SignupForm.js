@@ -8,23 +8,33 @@ import isEmpty from 'lodash/isEmpty';
 
 function commonValidationsSignup(data) {
   let errors = {};
+  function isPassword(str) {
+    let pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,16}$/;
+    return pattern.test(str);
+  }
 
   if (Validator.isEmpty(data.username)) {
     errors.username = '用户名不能为空';
+  } else if (!Validator.isLength(data.username, {min: 4, max: 16})) {
+    errors.username = '用户名必须在4～16个字符之间';
+  } else if (!Validator.isAlpha(data.username) && !Validator.isAlphanumeric(data.username)) {
+    errors.username = '用户名必须为字母或字母和数字组合';
   }
   if (Validator.isEmpty(data.email)) {
     errors.email = '邮箱不能为空';
-  }
-  if (!Validator.isEmail(data.email)) {
+  } else if (!Validator.isEmail(data.email)) {
     errors.email = '邮箱不合法';
   }
   if (Validator.isEmpty(data.password)) {
     errors.password = '请输入密码';
+  } else if (!Validator.isLength(data.password, {min: 6, max: 16})) {
+    errors.password = '输入错误！密码必须在6～16个字符之内';
+  } else if (!isPassword(data.password)) {
+    errors.password = '输入错误！密码必须包含数字和大小写字母,特殊字符随意';
   }
   if (Validator.isEmpty(data.passwordConfig)) {
     errors.passwordConfig = '请再次确认密码';
-  }
-  if (!Validator.equals(data.password, data.passwordConfig)) {
+  } else if (!Validator.equals(data.password, data.passwordConfig)) {
     errors.passwordConfig = '密码必须一致';
   }
   return {

@@ -34,8 +34,12 @@ router.post('/', (req, res, next) => {
         password_digest
       });
       users.save((err) => {
-        if (err) res.status(500).json({ error: err });
-        res.json({ success: true });
+        if (err) {
+          res.status(500).json({ error: err });
+        } else {
+          res.json({ success: true });
+        }
+
       });
     } else {
       res.status(400).json(errors);

@@ -9,10 +9,8 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <div className="container is-fluid">
-          <FlashMessagesList />
-          {this.props.children}
-        </div>
+        <FlashMessagesList />
+        {this.props.children}
         <Footer />
       </div>
     );

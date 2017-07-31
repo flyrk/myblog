@@ -65,10 +65,13 @@ class Header extends Component {
 
           <div className="navbar-end">
             <Link className="navbar-item " to="/">
-              <span className="item-link">Home</span>
+              <span className="item-link">首页</span>
+            </Link>
+            <Link className="navbar-item " to="/posts">
+              <span className="item-link">新建文章</span>
             </Link>
             <Link className="navbar-item " to="/about">
-              <span className="item-link">About</span>
+              <span className="item-link">关于</span>
             </Link>
 
             <div className="navbar-item">
