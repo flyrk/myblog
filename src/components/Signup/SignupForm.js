@@ -73,6 +73,14 @@ class SignupForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  handleOnBlur = () => {
+    if (this.isValid()) {
+      this.setState({
+        errors: {}
+      });
+    }
+  };
+
   handlerOnSubmit = (e) => {
     e.preventDefault();
     if (this.isValid()) {
@@ -101,6 +109,8 @@ class SignupForm extends Component {
           value={this.state.username}
           label='用户名'
           handlerOnChange={this.handlerOnChange}
+          placeholder='请输入用户名'
+          handleOnBlur={this.handleOnBlur}
           type='text'
           error={errors.username}
         />
@@ -110,6 +120,8 @@ class SignupForm extends Component {
           value={this.state.email}
           label='邮箱'
           handlerOnChange={this.handlerOnChange}
+          placeholder='请输入邮箱'
+          handleOnBlur={this.handleOnBlur}
           type='text'
           error={errors.email}
         />
@@ -119,6 +131,8 @@ class SignupForm extends Component {
           value={this.state.password}
           label='密码'
           handlerOnChange={this.handlerOnChange}
+          placeholder='请输入密码'
+          handleOnBlur={this.handleOnBlur}
           type='password'
           error={errors.password}
         />
@@ -128,6 +142,8 @@ class SignupForm extends Component {
           value={this.state.passwordConfig}
           label='确认密码'
           handlerOnChange={this.handlerOnChange}
+          placeholder='请再次确认密码'
+          handleOnBlur={this.handleOnBlur}
           type='password'
           error={errors.passwordConfig}
         />

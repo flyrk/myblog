@@ -49,6 +49,14 @@ class LoginForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  handleOnBlur = () => {
+    if (this.isValid()) {
+      this.setState({
+        errors: {}
+      });
+    }
+  };
+
   handlerOnSubmit = (e) => {
     e.preventDefault();
     if (this.isValid()) {
@@ -82,6 +90,8 @@ class LoginForm extends Component {
           value={identifier}
           label='用户名/邮箱'
           handlerOnChange={this.handlerOnChange}
+          placeholder='请输入用户名／邮箱'
+          handleOnBlur={this.handleOnBlur}
           type='text'
           error={errors.identifier}
         />
@@ -91,6 +101,8 @@ class LoginForm extends Component {
           value={password}
           label='密码'
           handlerOnChange={this.handlerOnChange}
+          placeholder='请输入密码'
+          handleOnBlur={this.handleOnBlur}
           type='password'
           error={errors.password}
         />

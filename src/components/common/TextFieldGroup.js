@@ -9,6 +9,8 @@ class TextFieldGroup extends Component {
     label: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     error: PropTypes.string,
+    placeholder: PropTypes.string.isRequired,
+    handleOnBlur: PropTypes.func.isRequired,
     handlerOnChange: PropTypes.func.isRequired
   }
 
@@ -17,10 +19,11 @@ class TextFieldGroup extends Component {
   }
 
   render() {
-    const { label, field, value, type, error, handlerOnChange } = this.props;
+    const { label, field, value, type, placeholder, error, handlerOnChange, handleOnBlur } = this.props;
     let faIco = 'fa ';
     switch (field) {
       case "username":
+      case "identifier":
         faIco += 'fa-user';
         break;
       case "email":
@@ -30,8 +33,14 @@ class TextFieldGroup extends Component {
       case "passwordConfig":
         faIco += 'fa-lock';
         break;
+      case "title":
+        faIco += 'fa-header';
+        break;
+      case "categories":
+        faIco += 'fa-list-alt';
+        break;
       default:
-        faIco += 'fa-user';
+        faIco = '';
     }
     return (
       <div className="field">
@@ -42,6 +51,8 @@ class TextFieldGroup extends Component {
             type={type}
             onChange={handlerOnChange}
             name={field}
+            onBlur={handleOnBlur}
+            placeholder={placeholder}
             value={value} />
           <span className="icon is-small is-left">
             <i className={faIco}></i>
