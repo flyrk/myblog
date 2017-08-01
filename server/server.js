@@ -7,6 +7,7 @@ import mongoose from 'mongoose';
 
 import users from './routes/users';
 import auth from './routes/auth';
+import posts from './routes/posts';
 
 const app = express();
 const dbUrl = 'mongodb://localhost/myblog';
@@ -31,6 +32,12 @@ app.use('/api/users', users);
  * sign in user
  */
 app.use('/api/auth', auth);
+
+/*
+ * POST /api/posts
+ * post new passage
+ */
+app.use('/api/posts', posts);
 
 // 监听端口，启动程序
 app.listen(8080, () => {

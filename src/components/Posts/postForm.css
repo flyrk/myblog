@@ -1,7 +1,5 @@
 .post-form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-  .post-form-container .container {
-    width: 60%;
-    margin-top: 50px; }
+  margin: 50px;
+  width: 60%; }
+  .post-form-container .control textarea {
+    height: 500px; }

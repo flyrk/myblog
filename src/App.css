@@ -5231,3 +5231,8 @@ label.panel-block {
 .footer {
   background-color: whitesmoke;
   padding: 3rem 1.5rem 6rem; }
+
+.App {
+  min-height: 100%;
+  height: auto;
+  position: relative; }
