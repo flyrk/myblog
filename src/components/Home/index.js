@@ -1,20 +1,47 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import Page from './Page';
+
+import { homePostRequest } from '../../actions/postActions';
 
 class Home extends Component {
+  static propTypes = {
+    homePostRequest: PropTypes.func.isRequired
+  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      passages: []
+    };
+  }
+  componentWillMount() {
+    this.props.homePostRequest().then(res => {
+      console.log(res);
+      this.setState({
+        passages: res.data
+      });
+    })
+  }
   render() {
+    const passage = this.state.passages.map((passage, id) => {
+      const { title, categories, content, createTime } = passage;
+      return (
+        <Page
+          key={id}
+          title={title}
+          categories={categories}
+          content={content}
+          createTime={createTime}
+        />
+      );
+    });
     return (
       <div className="container is-fluid">
-        <section className="section">
-          <div className="container">
-            <h1 className="title">Section</h1>
-            <h2 className="subtitle">
-              A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading
-            </h2>
-          </div>
-        </section>
+        {passage}
       </div>
     );
   }
 }
 
-export default Home;
+export default connect(null, { homePostRequest })(Home);

@@ -59,6 +59,8 @@ class PostForm extends Component {
     return isValid;
   };
 
+
+
   handlerOnChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -75,30 +77,33 @@ class PostForm extends Component {
     e.preventDefault();
     if (this.isValid()) {
       let curTime = new Date();
-      console.log(curTime);
       const year = curTime.getFullYear(),
                month = curTime.getMonth() + 1,
                date = curTime.getDate(),
                hour = curTime.getHours(),
                minutes = curTime.getMinutes();
+      let { createTime } = this.state;
+      createTime = {
+        year,
+        month,
+        date,
+        hour,
+        minutes
+      };
+      console.log(createTime);
       this.setState({
         errors: {},
         isLoading: true,
-        createTime: {
-          year,
-          month,
-          date,
-          hour,
-          minutes
-        }
+        createTime
+      }, () => {
+        console.log(this.state);
+        this.props.postRequest(this.state).then(
+          res => {
+            this.props.history.push('/');
+          },
+          err => this.setState({ errors: err.response.data, isLoading: false })
+        );
       });
-      console.log(this.state);
-      this.props.postRequest(this.state).then(
-        res => {
-          this.props.history.push('/');
-        },
-        err => this.setState({ errors: err.response.data, isLoading: false })
-      );
     }
   }
 

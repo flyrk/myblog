@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import PostForm from './PostForm';
 import { connect } from 'react-redux';
 
-import postRequest from '../../actions/postActions';
+import { postRequest } from '../../actions/postActions';
 import { addFlashMessage } from '../../actions/flashMessages';
 
 import './post.css';
