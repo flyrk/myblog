@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Page from './Page';
 
 import './home.css';
@@ -40,6 +41,16 @@ class Home extends Component {
     return (
       <div className="home-container is-fluid">
         {passage}
+        <div className="field">
+          <div className="control">
+            <Link to='/archieves'>
+            <button
+              className="button is-success is-outlined">
+              more
+            </button>
+            </Link>
+          </div>
+        </div>
       </div>
     );
   }
