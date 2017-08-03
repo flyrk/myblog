@@ -29,8 +29,14 @@ router.get('/', (req, res) => {
         res.status(200).json(posts);
       }
     });
-  } else if (req.query.postPage) {
-
+  } else if (req.query.archieves) {
+      Posts.find({}).exec((err, posts) => {
+        if (err) {
+          res.status(500).json({ errors: err});
+        } else {
+          res.status(200).json(posts);
+        }
+      });
   }
 });
 

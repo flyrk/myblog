@@ -48,6 +48,12 @@ class Header extends Component {
         </p>
       </div>
     );
+
+    const postLink = (
+      <Link className="navbar-item " to="/newposts">
+        <span className="item-link">新建文章</span>
+      </Link>
+    );
     return (
       <nav className="navbar ">
         <div className="navbar-brand">
@@ -67,9 +73,10 @@ class Header extends Component {
             <Link className="navbar-item " to="/">
               <span className="item-link">首页</span>
             </Link>
-            <Link className="navbar-item " to="/newposts">
-              <span className="item-link">新建文章</span>
+            <Link className="navbar-item " to="/archieves">
+              <span className="item-link">归档</span>
             </Link>
+            {isAuthenticated ? postLink : ''}
             <Link className="navbar-item " to="/about">
               <span className="item-link">关于</span>
             </Link>

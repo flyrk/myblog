@@ -152,16 +152,10 @@ class PostForm extends Component {
               onBlur={this.handleOnBlur}
               placeholder="请输入正文..." />
 
+            <div className="markdown-body markdown-rendered-content"
+                dangerouslySetInnerHTML={{__html: this.state.renderContent}} />
           </div>
           { errors.content && <p className="help is-danger">{errors.content}</p>}
-          <hr />
-          <div className="field">
-            <label className="label">预览:</label>
-            <div className="control">
-              <div className="markdown-body markdown-rendered-content"
-                dangerouslySetInnerHTML={{__html: this.state.renderContent}} />
-            </div>
-          </div>
         </div>
 
         <div className="field is-grouped">

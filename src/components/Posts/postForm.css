@@ -1,5 +1,18 @@
 .post-form-container {
   margin: 50px;
   width: 60%; }
-  .post-form-container .control textarea {
-    height: 500px; }
+  .post-form-container .control {
+    display: flex;
+    justify-content: space-around; }
+    .post-form-container .control .markdown-body {
+      min-width: 49%;
+      width: 49%;
+      border: 1px dashed #919191;
+      border-radius: 2px;
+      height: 500px;
+      overflow-y: scroll; }
+    .post-form-container .control textarea {
+      height: 500px;
+      width: 49%;
+      min-width: 49%;
+      overflow: scroll; }
