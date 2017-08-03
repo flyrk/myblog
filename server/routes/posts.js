@@ -22,7 +22,7 @@ router.post('/', (req, res) => {
 
 router.get('/', (req, res) => {
   if (req.query.home) {
-    Posts.find({}).limit(3).exec((err, posts) => {
+    Posts.find({}).limit(5).exec((err, posts) => {
       if (err) {
         res.status(500).json({ errors: err});
       } else {

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Page from './Page';
 
+import './home.css';
 import { homePostRequest } from '../../actions/postActions';
 
 class Home extends Component {
@@ -37,7 +38,7 @@ class Home extends Component {
       );
     });
     return (
-      <div className="container is-fluid">
+      <div className="home-container is-fluid">
         {passage}
       </div>
     );

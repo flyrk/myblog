@@ -6,6 +6,7 @@ import TextFieldGroup from '../common/TextFieldGroup';
 
 import './postForm.css';
 
+import marked from 'marked';
 import Validator from 'validator';
 import isEmpty from 'lodash/isEmpty';
 
@@ -39,6 +40,7 @@ class PostForm extends Component {
       title: '',
       categories: '',
       content: '',
+      renderContent: '',
       createTime: {
         year: 2017,
         month: 0,
@@ -63,6 +65,12 @@ class PostForm extends Component {
 
   handlerOnChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
+    if (e.target.name === 'content') {
+      console.log(marked(e.target.value));
+      this.setState({
+        renderContent: marked(e.target.value)
+      });
+    }
   };
 
   handleOnBlur = () => {
@@ -138,14 +146,22 @@ class PostForm extends Component {
           <div className="control">
             <textarea
               className={classnames("textarea", { 'is-danger': errors.content })}
+              name="content"
               value={content}
-              name='content'
               onChange={this.handlerOnChange}
               onBlur={this.handleOnBlur}
               placeholder="请输入正文..." />
+
           </div>
           { errors.content && <p className="help is-danger">{errors.content}</p>}
-
+          <hr />
+          <div className="field">
+            <label className="label">预览:</label>
+            <div className="control">
+              <div className="markdown-body markdown-rendered-content"
+                dangerouslySetInnerHTML={{__html: this.state.renderContent}} />
+            </div>
+          </div>
         </div>
 
         <div className="field is-grouped">
