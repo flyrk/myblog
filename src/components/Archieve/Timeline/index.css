@@ -14,5 +14,13 @@
   .timeline-wrap .timeline-content {
     margin-left: 2.2em;
     display: none; }
+    .timeline-wrap .timeline-content li {
+      color: #474747; }
+      .timeline-wrap .timeline-content li:hover {
+        cursor: pointer;
+        color: rgba(71, 71, 71, 0.7); }
+      .timeline-wrap .timeline-content li span {
+        padding-left: 2.2em;
+        color: rgba(71, 71, 71, 0.6); }
   .timeline-wrap .is-active {
     display: block; }
