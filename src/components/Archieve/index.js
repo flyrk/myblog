@@ -23,7 +23,7 @@ class Archieve extends Component {
     this.props.getArchieves().then(res => {
       const data = res.data;
       let timelineForm = [];
-      data.map((posts) => {
+      data.forEach((posts) => {
         let timeline = {};
         timeline.year = posts.createTime.year;
         timeline.month = posts.createTime.month;
@@ -47,6 +47,10 @@ class Archieve extends Component {
     ));
     return (
       <div className="archieve-container">
+        { this.state.errors &&
+          <div className='message is-danger'>
+            <div className="message-body">{this.state.errors.err}</div>
+          </div>}
         { timeline }
       </div>
     );
