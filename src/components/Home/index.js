@@ -22,13 +22,11 @@ class Home extends Component {
   callbackPassages = () => {
     const { passages } = this.state;
     passages.sort(timeSort);
-    console.log(passages);
     this.setState({ passages });
   };
 
   componentWillMount() {
     this.props.homePostRequest().then(res => {
-      console.log(res);
       this.setState({
         passages: res.data
       }, this.callbackPassages);
