@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { Link } from 'react-router-dom';
 
 import './index.css';
 
@@ -27,10 +28,12 @@ class Archieve extends Component {
   render() {
     const { year, month, articles } = this.props;
     const timelineList = articles.map((article, id) => (
-      <li key={id}>
-        {article.title}
-        <span>{article.createTime.year}-{article.createTime.month}-{article.createTime.date} {article.createTime.hour}:{article.createTime.minutes}</span>
-      </li>
+      <Link to={'/articles/'+year+'/'+month+'/'+article.createTime.date+'/'+article.title}>
+        <li key={id}>
+          {article.title}
+          <span>{article.createTime.year}-{article.createTime.month}-{article.createTime.date} {article.createTime.hour}:{article.createTime.minutes}</span>
+        </li>
+      </Link>
     ));
     return (
       <div className="timeline-wrap">

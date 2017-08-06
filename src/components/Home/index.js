@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Page from './Page';
+import Page from '../common/Page/Page';
 
 import timeSort from '../../utils/timeSort';
 import './home.css';

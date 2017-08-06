@@ -37,6 +37,9 @@ router.get('/', (req, res) => {
           res.status(200).json(posts);
         }
       });
+  } else if (req.query.posts) {
+    console.log(req.query.title);
+    
   }
 });
 

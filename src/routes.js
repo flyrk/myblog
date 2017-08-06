@@ -7,6 +7,7 @@ import About from './components/About';
 import SignupPage from './components/Signup/SignupPage';
 import LoginPage from './components/Login/LoginPage';
 import PostPage from './components/Posts/PostPage';
+import Articles from './components/Articles';
 
 export default class Routers extends Component {
   render() {
@@ -15,6 +16,7 @@ export default class Routers extends Component {
         <App>
           <Route exact path='/' component={Home} />
           <Route path='/archieves' component={Archieve} />
+          <Route path='/articles/:year/:month/:date/:title' component={Articles} />
           <Route path='/newposts' component={PostPage} />
           <Route path='/about' component={About} />
           <Route path='/login' component={LoginPage} />
