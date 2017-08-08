@@ -23,9 +23,9 @@ class Articles extends Component {
     const {year, month, date, title} = this.props.match.params;
     this.props.posts.forEach(post => {
       if (post.title === title
-          && post.createTime.year == year
-          && post.createTime.month == month
-          && post.createTime.date == date) {
+          && post.createTime.year === parseInt(year, 10)
+          && post.createTime.month === parseInt(month, 10)
+          && post.createTime.date === parseInt(date, 10)) {
         this.setState({
           title: post.title,
           categories: post.categories,
@@ -42,7 +42,6 @@ class Articles extends Component {
 
   render() {
     const { title } = this.props.match.params;
-    console.log(this.state);
     return (
       <div className="articles-container">
         <Page
