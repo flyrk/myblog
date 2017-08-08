@@ -6,6 +6,9 @@ import Page from '../common/Page/Page';
 import './index.css';
 
 class Articles extends Component {
+  static propTypes = {
+    posts: PropTypes.array.isRequired
+  };
   constructor(props) {
     super(props);
     this.state = {
@@ -16,24 +19,47 @@ class Articles extends Component {
     };
   }
 
+  callStateBack = () => {
+    const {year, month, date, title} = this.props.match.params;
+    this.props.posts.forEach(post => {
+      if (post.title === title
+          && post.createTime.year == year
+          && post.createTime.month == month
+          && post.createTime.date == date) {
+        this.setState({
+          title: post.title,
+          categories: post.categories,
+          content: post.content,
+          createTime: post.createTime
+        });
+      }
+    });
+  }
+
   componentWillMount() {
-    
+    this.callStateBack();
   }
 
   render() {
-    console.log(this.props.match.params);
-    const { year, month, date, title } = this.props.match.params;
+    const { title } = this.props.match.params;
+    console.log(this.state);
     return (
       <div className="articles-container">
         <Page
           title={title}
+          categories={this.state.categories}
           content={this.state.content}
           createTime={this.state.createTime}
         />
-        Articles
       </div>
     );
   }
 }
 
-export default connect(null)(Articles);
+function mapStateProps(state) {
+  return {
+    posts: state.posts.posts
+  };
+}
+
+export default connect(mapStateProps)(Articles);

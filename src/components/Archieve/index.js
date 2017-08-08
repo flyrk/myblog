@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Timeline from './Timeline';
-import { getArchieves } from '../../actions/archieveActions';
+import { getArchieves, setPosts } from '../../actions/archieveActions';
 
 import timeSort from '../../utils/timeSort';
 import './index.css';
 
 class Archieve extends Component {
   static propTypes = {
-    getArchieves: PropTypes.func.isRequired
+    getArchieves: PropTypes.func.isRequired,
+    setPosts: PropTypes.func.isRequired
   };
 
   constructor(props) {
@@ -76,6 +77,7 @@ class Archieve extends Component {
         articles.push(posts);
         timelineForm.push(timeline);
       });
+      this.props.setPosts(data);
       this.formTimeline(timelineForm, articles);
       this.setState({ timelineForm });
     },
@@ -104,4 +106,4 @@ class Archieve extends Component {
   }
 }
 
-export default connect(null, { getArchieves })(Archieve);
+export default connect(null, { setPosts, getArchieves })(Archieve);

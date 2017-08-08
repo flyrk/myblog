@@ -1,19 +1,13 @@
-import { GET_POSTS } from '../actions/types';
+import { SET_POSTS } from '../actions/types';
 
 const initialState = {
-  title: '',
-  categories: '',
-  content: '',
-  createTime: {}
+  posts: []
 };
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case GET_POSTS:
+    case SET_POSTS:
       return {
-        title: action.title,
-        categories: action.categories,
-        content: action.content,
-        createTime: action.createTime
+        posts: action.posts
       };
     default:
       return state;
