@@ -1,6 +1,6 @@
 # This Project is a Blog system
 
-## main tec stack:
+## main tools stack:
 * React
 * Redux
 * React-Router
@@ -9,6 +9,8 @@
 * MongoDB
 * axios
 * lodash
+* Bulma
+* Sass
 
 ## To start `server`Side
 open the blog folder and run `cd server npm start`
