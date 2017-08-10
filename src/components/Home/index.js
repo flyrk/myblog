@@ -53,7 +53,7 @@ class Home extends Component {
           <div className="control">
             <Link to='/archieves'>
             <button
-              className="button is-success is-outlined">
+              className="button is-info is-outlined">
               more
             </button>
             </Link>

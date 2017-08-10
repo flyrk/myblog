@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import Page from '../common/Page/Page';
 
@@ -7,7 +8,8 @@ import './index.css';
 
 class Articles extends Component {
   static propTypes = {
-    posts: PropTypes.array.isRequired
+    posts: PropTypes.array.isRequired,
+    history: PropTypes.object.isRequired
   };
   constructor(props) {
     super(props);
@@ -20,7 +22,8 @@ class Articles extends Component {
   }
 
   callStateBack = () => {
-    const {year, month, date, title} = this.props.match.params;
+    let {year, month, date, title} = this.props.match.params;
+    title = title.split('-').join(' ');
     this.props.posts.forEach(post => {
       if (post.title === title
           && post.createTime.year === parseInt(year, 10)
@@ -41,14 +44,14 @@ class Articles extends Component {
   }
 
   render() {
-    const { title } = this.props.match.params;
+    const { title, categories, content, createTime } = this.state;
     return (
       <div className="articles-container">
         <Page
           title={title}
-          categories={this.state.categories}
-          content={this.state.content}
-          createTime={this.state.createTime}
+          categories={categories}
+          content={content}
+          createTime={createTime}
         />
       </div>
     );
@@ -61,4 +64,4 @@ function mapStateProps(state) {
   };
 }
 
-export default connect(mapStateProps)(Articles);
+export default withRouter(connect(mapStateProps)(Articles));

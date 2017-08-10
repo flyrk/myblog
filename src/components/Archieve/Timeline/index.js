@@ -28,7 +28,7 @@ class Archieve extends Component {
   render() {
     const { year, month, articles } = this.props;
     const timelineList = articles.map((article, id) => (
-      <Link to={'/articles/'+year+'/'+month+'/'+article.createTime.date+'/'+article.title} key={id}>
+      <Link to={'/articles/'+year+'/'+month+'/'+article.createTime.date+'/'+article.title.split(' ').join('-')} key={id}>
         <li>
           {article.title}
           <span>{article.createTime.year}-{article.createTime.month}-{article.createTime.date} {article.createTime.hour}:{article.createTime.minutes}</span>

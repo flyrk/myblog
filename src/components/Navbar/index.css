@@ -1,12 +1,10 @@
 .navbar {
-  background-color: #3b3b3b;
+  background-color: #f9f9f9;
   box-shadow: 0 1px 1px #ababab; }
   .navbar .navbar-brand img {
     width: 100px;
     height: 25px; }
-  .navbar .navbar-item:hover {
-    background-color: transparent; }
   .navbar .navbar-item .item-link {
-    color: #c2c2c2; }
+    color: #3273dc; }
     .navbar .navbar-item .item-link:hover {
-      color: rgba(194, 194, 194, 0.6); }
+      color: rgba(50, 115, 211, 0.8); }
