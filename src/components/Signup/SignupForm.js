@@ -152,7 +152,7 @@ class SignupForm extends Component {
           <div className="control">
             <button
               disabled={this.state.isLoading}
-              className="button is-primary">
+              className="button is-success">
               注册
             </button>
           </div>

@@ -111,7 +111,7 @@ class LoginForm extends Component {
           <div className="control">
             <button
               disabled={isLoading}
-              className="button is-primary">
+              className="button is-success">
               登录
             </button>
           </div>
