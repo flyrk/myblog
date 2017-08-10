@@ -6,11 +6,12 @@ import Page from '../common/Page/Page';
 
 import timeSort from '../../utils/timeSort';
 import './home.css';
-import { homePostRequest } from '../../actions/postActions';
+import { postResponse, setPosts } from '../../actions/postActions';
 
 class Home extends Component {
   static propTypes = {
-    homePostRequest: PropTypes.func.isRequired
+    postResponse: PropTypes.func.isRequired,
+    setPosts: PropTypes.func.isRequired
   };
   constructor(props) {
     super(props);
@@ -20,17 +21,21 @@ class Home extends Component {
   }
 
   callbackPassages = () => {
-    const { passages } = this.state;
+    let { passages } = this.state;
     passages.sort(timeSort);
-    this.setState({ passages });
+    this.setState({ passages: passages.splice(0, 5) });
   };
 
   componentWillMount() {
-    this.props.homePostRequest().then(res => {
+    this.props.postResponse().then(res => {
+      this.props.setPosts(res.data);
       this.setState({
         passages: res.data
       }, this.callbackPassages);
-    });
+      },
+      (err) => this.setState({ errors: err.response.data })
+    );
+
   }
 
   render() {
@@ -64,4 +69,4 @@ class Home extends Component {
   }
 }
 
-export default connect(null, { homePostRequest })(Home);
+export default connect(null, { postResponse, setPosts })(Home);
