@@ -21,23 +21,13 @@ router.post('/', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-  if (req.query.home) {
-    Posts.find({}).limit(5).exec((err, posts) => {
-      if (err) {
-        res.status(500).json({ errors: err});
-      } else {
-        res.status(200).json(posts);
-      }
-    });
-  } else if (req.query.archieves) {
-      Posts.find({}).exec((err, posts) => {
-        if (err) {
-          res.status(500).json({ errors: err});
-        } else {
-          res.status(200).json(posts);
-        }
-      });
-  }
+  Posts.find({}).exec((err, posts) => {
+    if (err) {
+      res.status(500).json({ errors: err});
+    } else {
+      res.status(200).json(posts);
+    }
+  });
 });
 
 export default router;
