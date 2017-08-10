@@ -2,15 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Timeline from './Timeline';
-import { getArchieves, setPosts } from '../../actions/archieveActions';
 
 import timeSort from '../../utils/timeSort';
 import './index.css';
 
 class Archieve extends Component {
   static propTypes = {
-    getArchieves: PropTypes.func.isRequired,
-    setPosts: PropTypes.func.isRequired
+    posts: PropTypes.array.isRequired
   };
 
   constructor(props) {
@@ -67,8 +65,7 @@ class Archieve extends Component {
   };
 
   componentWillMount() {
-    this.props.getArchieves().then(res => {
-      const data = res.data;
+      const data = this.props.posts;
       let timelineForm = [], articles = [];
       data.forEach((posts) => {
         let timeline = {};
@@ -77,12 +74,8 @@ class Archieve extends Component {
         articles.push(posts);
         timelineForm.push(timeline);
       });
-      this.props.setPosts(data);
       this.formTimeline(timelineForm, articles);
       this.setState({ timelineForm });
-    },
-    (err) => this.setState({ errors: err.response.data })
-    );
   }
 
   render() {
@@ -106,4 +99,10 @@ class Archieve extends Component {
   }
 }
 
-export default connect(null, { setPosts, getArchieves })(Archieve);
+function mapStateProps(state) {
+  return {
+    posts: state.posts
+  };
+}
+
+export default connect(mapStateProps)(Archieve);
