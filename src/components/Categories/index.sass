@@ -1,0 +1,55 @@
+.categories-container
+  padding-bottom: 100px
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  margin-top: 50px
+  margin-left: 10%
+  margin-right: 10%
+  width: 80%
+  height: 100%
+  .categories-main-list
+    display: flex
+    flex-wrap: wrap
+    li
+      border: 1px solid #1cc5eb
+      margin-right: 10px
+      margin-bottom: 10px
+      padding: 5px
+      text-align: center
+      &:hover
+        cursor: pointer
+      a
+        color: #10a7c9
+        &:hover
+          color: rgba(16, 167, 201, .8)
+          text-shadow: 0 1px 2px #c1f2fc
+  .categories-list
+    width: 80%
+    margin-top: 50px
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    .categories-singlelist
+      margin-bottom: 20px
+      width: 50%
+      &:hover
+        cursor: pointer
+      h1
+        font-size: 1.8em
+        font-weight: bold
+        color: #5D686F
+      ul
+        margin-left: 7%
+        font-size: 16px
+        list-style-image: url('../../assets/triangle-right.png')
+        li
+          margin-top: 5px
+          a
+            color: #5D686F
+            &:hover
+              text-decoration: underline
+              color: rgba(93, 104, 111, .8)
+          span
+            margin-left: 50px

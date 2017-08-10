@@ -1,14 +1,12 @@
 import { SET_POSTS } from '../actions/types';
 
-const initialState = {
-  posts: []
-};
+const initialState = [];
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case SET_POSTS:
-      return {
-        posts: action.posts
-      };
+      return [
+        ...action.posts
+      ];
     default:
       return state;
   }

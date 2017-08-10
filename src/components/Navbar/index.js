@@ -87,6 +87,9 @@ class Header extends Component {
             <Link className="navbar-item " to="/">
               <span className="item-link">首页</span>
             </Link>
+            <Link className="navbar-item " to="/categories">
+              <span className="item-link">分类</span>
+            </Link>
             <Link className="navbar-item " to="/archieves">
               <span className="item-link">归档</span>
             </Link>

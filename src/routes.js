@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import Home from './components/Home';
+import Categories from './components/Categories';
 import Archieve from './components/Archieve';
 import About from './components/About';
 import SignupPage from './components/Signup/SignupPage';
@@ -15,6 +16,7 @@ export default class Routers extends Component {
       <Router>
         <App>
           <Route exact path='/' component={Home} />
+          <Route path='/categories' component={Categories} />
           <Route path='/archieves' component={Archieve} />
           <Route path='/articles/:year/:month/:date/:title' component={Articles} />
           <Route path='/newposts' component={PostPage} />
