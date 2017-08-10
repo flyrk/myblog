@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { SET_POSTS } from './types';
 
 export function postRequest(data) {
   return dispatch => {
@@ -6,12 +7,15 @@ export function postRequest(data) {
   }
 }
 
-export function homePostRequest() {
+export function postResponse() {
   return dispatch => {
-    return axios.get('/api/posts', {
-      params: {
-        home: true
-      }
-    });
+    return axios.get('/api/posts');
   }
+}
+
+export function setPosts(posts) {
+  return {
+    type: SET_POSTS,
+    posts
+  };
 }
