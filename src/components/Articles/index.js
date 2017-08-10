@@ -60,7 +60,7 @@ class Articles extends Component {
 
 function mapStateProps(state) {
   return {
-    posts: state.posts.posts
+    posts: state.posts
   };
 }
 
