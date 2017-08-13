@@ -2,6 +2,7 @@ import express from 'express';
 import Users from '../models/users';
 import jwt from 'jsonwebtoken';
 import config from '../config';
+import bcrypt from 'bcrypt';
 
 let router = express.Router();
 
@@ -15,15 +16,15 @@ router.post('/', (req, res) => {
       res.status(401).json({ form: '无法识别的用户 ' });
     } else {
       if (user) {
-        if (password === user.password_digest) {
+        bcrypt.compare(password, user.password_digest).then(function(res) {
           const token = jwt.sign({
             id: user.id,
             username: user.username
           }, config.jwtSecret);
           res.json({ token });
-        } else {
+        }).catch((err) => {
           res.status(401).json({ form: '密码错误 ' });
-        }
+        });
       } else {
         res.status(401).json({ form: '无法识别的用户'});
       }
