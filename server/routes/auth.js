@@ -21,7 +21,7 @@ router.post('/', (req, res) => {
             id: user.id,
             username: user.username
           }, config.jwtSecret);
-          res.json({ token });
+          res.json({ token });    // 创建token以便客户端识别用户
         }).catch((err) => {
           res.status(401).json({ form: '密码错误 ' });
         });
