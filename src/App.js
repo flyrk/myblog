@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import FlashMessagesList from './components/flash/FlashMessagesList';
+import ScrollBtn from './components/ScrollBtn'
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
         <Navbar />
         <FlashMessagesList />
         {this.props.children}
+        <ScrollBtn />
         <Footer />
       </div>
     );
