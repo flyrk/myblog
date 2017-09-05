@@ -3,3 +3,4 @@ export const DELETE_FLASH_MESSAGE = 'DELETE_FLASH_MESSAGE';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 export const SET_POSTS = 'SET_POSTS';
 export const GET_POSTS = 'GET_POSTS';
+export const ADD_COMMENT = 'ADD_COMMENT';

@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import CommentInputBox from './CommentInputBox';
 import CommentBox from './CommentBox';
 
 import './index.css';
 
-export default class Comments extends Component {
+class Comments extends Component {
   static propTypes = {
     prop: PropTypes
+  };
+
+  constructor(props) {
+    super(props);
   }
 
   render() {
@@ -22,3 +27,5 @@ export default class Comments extends Component {
     )
   }
 }
+
+export default connect()(Comments);
