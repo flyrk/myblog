@@ -10,13 +10,7 @@ export default class CommentBox extends Component {
   render() {
     return (
       <div className="comment-box-wrap box">
-        <div className="field">
-          <div className="control">
-            <input className="input" type="text" placeholder="你的名字" />
-            <textarea className="textarea" type="text" placeholder="请输入留言..." rows="10" />
-          </div>
-        </div>
-        <button className="button">评论</button>
+        
       </div>
     )
   }
