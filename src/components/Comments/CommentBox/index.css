@@ -1,0 +1,6 @@
+.comment-box-wrap {
+  padding: .8rem; }
+  .comment-box-wrap input {
+    margin-bottom: .4rem; }
+  .comment-box-wrap button {
+    float: right; }

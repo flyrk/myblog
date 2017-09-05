@@ -14,9 +14,10 @@ export default class Comments extends Component {
   render() {
     return (
       <div className="comments-container">
-        This is a Comments
-        <CommentInputBox />
-        <CommentBox />
+        <div className="comments-wrap">
+          <CommentInputBox />
+          <CommentBox />
+        </div>
       </div>
     )
   }
