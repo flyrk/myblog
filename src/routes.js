@@ -22,7 +22,7 @@ export default class Routers extends Component {
           <Route path='/articles/:year/:month/:date/:title' component={Articles} />
           <Route path='/newposts' component={PostPage} />
           <Route path='/about' component={About} />
-          <Route path='/comments' componenet={Comments} />
+          <Route path='/comments' component={Comments} />
           <Route path='/login' component={LoginPage} />
           <Route path='/signup' component={SignupPage} />
         </App>
