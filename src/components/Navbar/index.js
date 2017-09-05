@@ -97,6 +97,9 @@ class Header extends Component {
             <Link className="navbar-item " to="/about">
               <span className="item-link">关于</span>
             </Link>
+            <Link className="navbar-item " to="/comments">
+              <span className="item-link">留言</span>
+            </Link>
 
             <div className="navbar-item">
                 { isAuthenticated ? userLink : guestLink }
