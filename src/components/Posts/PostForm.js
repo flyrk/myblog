@@ -66,7 +66,7 @@ class PostForm extends Component {
   handlerOnChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
     if (e.target.name === 'content') {
-      console.log(marked(e.target.value));
+      // console.log(marked(e.target.value));
       this.setState({
         renderContent: marked(e.target.value)
       });
