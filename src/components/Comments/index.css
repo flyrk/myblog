@@ -15,3 +15,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center; }
+    .comments-container .comments-wrap .comment-inputbox-wrap {
+      padding: .8rem; }
+      .comments-container .comments-wrap .comment-inputbox-wrap input {
+        margin-bottom: .4rem; }
+      .comments-container .comments-wrap .comment-inputbox-wrap button {
+        float: right; }
