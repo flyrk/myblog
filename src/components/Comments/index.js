@@ -5,6 +5,9 @@ import { addComment } from '../../actions/commentActions';
 
 import './index.css';
 
+import Validator from 'validator';
+import isEmpty from 'lodash/isEmpty';
+
 class Comments extends Component {
   static propTypes = {
     addComment: PropTypes.func.isRequired,
@@ -16,26 +19,40 @@ class Comments extends Component {
     this.state = {
       comments: [],
       username: '',
-      comment: ''
+      comment: '',
+      error: {}
     };
-    this.handleOnChange = this.handleOnChange.bind(this);
-    this.handleOnClick = this.handleOnClick.bind(this);
   }
 
-  handleOnChange(event) {
+  handleOnChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  handleOnClick() {
-    this.props.addComment(this.state);
-    this.setState({
-      comment: '',
-      comments: this.props.comments
-    });
+  handleOnClick = () => {
+    if (this.isValid()) {
+      this.props.addComment(this.state);
+      this.setState({
+        comment: '',
+        comments: this.props.comments
+      });
+    }
+  }
+
+  isValid = () => {
+    const { username, comment } = this.state;
+    let error = {};
+    if (Validator.isEmpty(username)) {
+      error.username = "请输入用户名";
+    }
+    if (Validator.isEmpty(comment) || !Validator.isLength(comment, { min: 5 })) {
+      error.comment = "请输入至少5个字符";
+    }
+    this.setState({ error });
+    return isEmpty(error);
   }
 
   render() {
-    const comments = this.state.comments;
+    const { comments, error } = this.state;
     const commentBox = (
       <div className="commentbox-wrap box">
         {comments.map((eachComment, id) => (
@@ -51,6 +68,7 @@ class Comments extends Component {
       </div>);
     return (
       <div className="comments-container">
+        <h1 className="title">留言板</h1>
         <div className="comments-wrap">
           <div className="comment-inputbox-wrap box">
             <div className="field">
@@ -61,12 +79,14 @@ class Comments extends Component {
                   onChange={this.handleOnChange}
                   value={this.state.username}
                 />
+                {error && <p className="help is-danger">{error.username}</p>}
                 <textarea className="textarea" type="text"
                   name="comment"
                   placeholder="请输入留言..." rows="10"
                   onChange={this.handleOnChange}
                   value={this.state.comment}
                 />
+                {error && <p className="help is-danger">{error.comment}</p>}
               </div>
             </div>
             <button className="button" onClick={this.handleOnClick}>评论</button>
